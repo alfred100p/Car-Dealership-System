@@ -50,17 +50,17 @@ class customer
 void customer::getcus()
 {
   cout<<"\n\t CUSTOMER NAME:		";
-  gets(cname);
+  fgets(cname,20,stdin);
   fflush(stdin);
   cout<<"\n\t PHONE NO:			";
   cin>>phno;
   fflush(stdin);
   cout<<"\n\t EMAIL:			   ";
-  gets(email);
+  fgets(email,10,stdin);
   fflush(stdin);
   cout<<"\n\t LOCATION:			";
   fflush(stdin);
-  gets(loc);
+  fgets(loc,10,stdin);
 }
 //global
 int cno;
@@ -126,7 +126,7 @@ void getprice()
  void getcolour()
 {
  cout<<"\n\n\t\tColour :\t";
-  gets(colour);
+  fgets(colour,10,stdin);
  }
 ////////////////////////////////////
  void gettorq()
@@ -138,13 +138,13 @@ void getprice()
 void getmodel()
  {
  cout<<"\n\n\n\tCar Model :\t";
-  gets(model);
+  fgets(model,15,stdin);
  }
 ///////////////////////////////////
  void gettype()
  {
  cout<<"\n\n\t Car Type:\t";
- gets(type);
+ fgets(type,10,stdin);
  }
  void getdata()
  {carno=cno;
@@ -201,7 +201,7 @@ int  dele(car);
 ///////////////////////////
 //////////////////////////
 void main()
-{clrscr();
+{system("cls");;
  initialise();
  background(245,100);
  main_menu();
@@ -214,7 +214,8 @@ void main()
 //FUNCTIONS
 //////////////////////////
 void credits()
-{int gdriver=DETECT,gmode;
+{/*
+ int gdriver=DETECT,gmode;
  initgraph(&gdriver,&gmode,"c:\\tc\\bgi\\");
  int xx,yy,color;
  int x=getmaxx();
@@ -309,7 +310,7 @@ void main_menu()
  char ch='0';
 
  do
-  { clrscr();
+  { system("cls");;
 	cout<<"\n\n\n\t\t\tMAIN MENU"
 	<<"\n\t\t\t"""""""""""""
 	<<"\n\n\tPRESS FOR"
@@ -331,12 +332,14 @@ void main_menu()
 		  break;
 	  case '3': saleshist();
 		  break;
-	  case '4': clrscr();
+	  case '4': system("cls");;
 
 
 	 }
 
   }while(ch!='4');
+  */
+cout << "credits";
  }
 
 
@@ -347,7 +350,7 @@ void saleshist()
 {
   int no=1;
   char ch='y';
-  clrscr();
+  system("cls");;
   car c;
   ifstream bin;
   bin.open("BILL.DAT",ios::in|ios::binary);
@@ -360,7 +363,7 @@ void saleshist()
  if(pos!=end)
 {
   do{
-  clrscr();
+  system("cls");;
    cout<<"\n	**********************************************************"
 	   <<"\n	* PRESS:U - TO MOVE UP"
 	   <<":D - TO MOVE DOWN"
@@ -402,9 +405,9 @@ void saleshist()
 }
 else
 {
-clrscr();
+system("cls");;
 cout<<"\n\n\n\n\t\t NO RECORDS EXIST";
-getch();
+std::cin.ignore();
 }
 bin.close();
 
@@ -417,7 +420,7 @@ void inventory()
   char ch='0';
 
  do
-  { clrscr();
+  { system("cls");;
 	cout<<"\n\n\n\t\t\tINVENTORY"
 	<<"\n\t\t\t"""""""""""""
 	<<"\n\n\tPRESS FOR"
@@ -449,7 +452,7 @@ void updatestock()
   char ch='0';
 
  do
-  { clrscr();
+  { system("cls");;
 	cout<<"\n\n\n\t\t\tUPDATE STOCK "
 	<<"\n\t\t\t"""""""""""""
 	<<"\n\n\tPRESS FOR"
@@ -473,29 +476,31 @@ void updatestock()
 }
 ///////////////////////////////////
 void addnew()
-{clrscr();
+{system("cls");;
  car c;
  fstream out("SHRWM.DAT",ios::binary|ios::app);
  int no;
  cout<<"\n\n\n\n\tENTER NO OF CARS TO BE ADDED:";
  cin>>no;
- clrscr();
+ system("cls");;
  for(int i=0;i<no;++i)
   {
-	clrscr();
+	system("cls");;
 	c.getdata();
 	out.write((char*)&c,sizeof(c));
 	++cno;
   }
   out.close();
-  clrscr();
+  system("cls");;
   cout<<"\n\n\n\n\t\t\tADDITION COMPLETE"
 	  <<"\n\n\t\t\tPRESS ANY KEY";
-  getch();
+  std::cin.ignore();
 }
 ///////////////////////////////////////
 void  background(int x,int y)
 {
+	cout << "background";
+	/*
  int gdriver=DETECT,gmode;
  initgraph(&gdriver,&gmode,"c:\\TC\\BGI");
  int cy=y;
@@ -523,6 +528,7 @@ void  background(int x,int y)
 
  }
   closegraph();
+  */
 
  }
  ////////////////////////////////////////
@@ -531,7 +537,7 @@ void viewstock()
 
   int no=1;
   char ch='y';
-  clrscr();
+  system("cls");;
   car c;
   ifstream bin;
   bin.open("SHRWM.DAT",ios::in|ios::binary);
@@ -544,7 +550,7 @@ void viewstock()
  if(pos!=end)
 {
   do{
-  clrscr();
+  system("cls");;
   cout<<"\n	**********************************************************"
 	   <<"\n	* PRESS:U - TO MOVE UP"
 	   <<":D - TO MOVE DOWN"
@@ -585,9 +591,9 @@ void viewstock()
 }
 else
 {
-clrscr();
+system("cls");;
 cout<<"\n\n\n\n   \t\t OUT OF STOCK";
-getch();
+std::cin.ignore();
 }
 bin.close();
 }
@@ -639,7 +645,7 @@ void purchase()
   bin.seekg(0,ios::beg);
   char str[20];
 	do{
-	clrscr();
+	system("cls");;
 	cout<<"\n\n\n\t\t\tPLACE ORDER"
 		<<"\n\t\t\t"""""""""""""
 		<<"\n\n\tSELECT CAR MODEL"
@@ -684,7 +690,7 @@ void purchase()
 	}
   int no=1;
   char ch='y';
-  clrscr();
+  system("cls");;
   car c;
   int i=1;
   int sz=sizeof(c);
@@ -693,7 +699,7 @@ void purchase()
  if(pos!=end&&flg)
 {
   do{
-  clrscr();
+  system("cls");;
    cout<<"\n\npress:u - to move up"
 	   <<":d - to move down"
 	   <<":c - to choose car"
@@ -725,14 +731,14 @@ void purchase()
 	<<"\n\t*********: ************"
 	<<"\b\b\b\b\b\b\b\b\b\b\b\b\b";
    cin>>ch;
-   getch();
+   std::cin.ignore();
    if((ch=='U'||ch=='u')&&pos!=0)
    pos-=sz;
    else if((ch=='d'||ch=='D')&&((pos+sz*1)!=end))
    pos+=sz;
    else if(ch=='c'||ch=='C')
    {
-   clrscr();
+   system("cls");;
    cout<<"\n\n\t\tYOU HAVE CHOSEN "
 	   <<"\n\t\t******************";
    c.putdata();
@@ -742,9 +748,9 @@ void purchase()
    fstream out("BILL.DAT",ios::app|ios::binary);
    out.write((char*)&c,sizeof(c));
    out.close();
-   clrscr();
+   system("cls");;
    cout<<"\n\n\n\n\t\t   PURCHASE COMPLETE";
-   getch();
+   std::cin.ignore();
    ch='b';
    }
 
@@ -754,9 +760,9 @@ void purchase()
 }
 else
 {
-clrscr();
+system("cls");;
 cout<<"\n\n\t\t OUT OF STOCK";
-getch();
+std::cin.ignore();
 }
 }
 }while(ch1!='b'&&ch1!='B');
@@ -769,7 +775,7 @@ int dele(car ch)
 {
 car c;
 int flag=0;
-clrscr();
+system("cls");;
 fstream ou("TEMP.DAT",ios::out|ios::binary);
 fstream in("SHRWM.DAT",ios::in|ios::binary);
 fstream inn("TEMP.DAT",ios::in|ios::binary);
@@ -804,7 +810,7 @@ void deletelast()
 {
   int no=1;
   char ch='y';
-  clrscr();
+  system("cls");;
   car c;
   ifstream bin;
   bin.open("SHRWM.DAT",ios::in|ios::binary);
@@ -817,7 +823,7 @@ void deletelast()
  if(end!=bin.tellg())
 {
   do{
-  clrscr();
+  system("cls");;
 	cout<<"\n	***************************************************************************"
 	   <<"\n	* PRESS:U - TO MOVE UP"
 	   <<":D - TO MOVE DOWN"
@@ -857,8 +863,8 @@ void deletelast()
   {
   if(dele(c))
   {
-   clrscr();
-  {
+   system("cls");;
+  {/*
 
    int gdriver = DETECT, gmode, errorcode;
 	initgraph(&gdriver, &gmode, "c:\\tc\\bgi\\");
@@ -935,7 +941,7 @@ void deletelast()
 	  arc(midx-30, midy-20, s+240, e+240, radius);
 	   arc(midx-30, midy-20, s+240, e+240, radius+1);
 	   arc(midx-30, midy-20, s+240, e+240, radius+2);
-
+	   
 	  if(i==50)
 	  {
 	  cleardevice();
@@ -978,7 +984,8 @@ void deletelast()
 
 
    closegraph();
-
+   */
+cout << "deleting please wait";
 }
 
 
@@ -986,9 +993,9 @@ void deletelast()
   }
   else
   {
-  clrscr();
+  system("cls");;
   cout<<"\n\n\n\t\tINVALID ENTRY";
-  getch();
+  std::cin.ignore();
   }
   }
 
@@ -999,9 +1006,9 @@ void deletelast()
 }
 else
 {
-clrscr();
+system("cls");;
 cout<<"\n\n\t\t OUT OF STOCK";
-getch();
+std::cin.ignore();
 }
 bin.close();
 
